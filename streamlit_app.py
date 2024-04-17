@@ -3,6 +3,20 @@ import altair as alt
 import math
 import pandas as pd
 import streamlit as st
+import discord
+from discord.ext import commands
+from os import getenv
+
+# Create a bot instance
+bot = commands.Bot(command_prefix=getenv("PREFIX") or '!')
+
+# Define a command
+@bot.command()
+async def ping(ctx):
+    # latency = round(bot.latency * 1000)
+    await ctx.send(f'Pong! {bot.latency}ms.')
+
+bot.run(getenv("TOKEN"))
 
 """
 # Welcome to Streamlit!
